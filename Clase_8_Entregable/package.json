@@ -1,5 +1,5 @@
 {
-  "name": "Clase_7",
+  "name": "Clase_8",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,7 +10,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "common": "^0.2.5",
     "express": "^4.17.1",
     "nodemon": "^2.0.9"
   }
