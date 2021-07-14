@@ -29,11 +29,8 @@ router.get('/productos',(req,res)=>{
 })
 
 router.get('/productos/:id',(req,res)=>{
-    let respuesta = productos.filter(dato => dato.id == [req.params.id]) 
-    if(respuesta=='')
-        respuesta = {error: 'producto no encontrado'}
-    
-    res.send(respuesta)
+    let array = productos.filter(dato => dato.id == [req.params.id])     
+    res.send(array)
 })
 
 router.post('/productos',(req,res)=>{
@@ -57,9 +54,7 @@ router.post('/productos',(req,res)=>{
 router.put('/productos/:id',(req,res)=>{
     let array = productos.filter(dato => dato.id == [req.params.id]) 
     let respuesta=''
-    if(array=='')
-        array = {error: 'producto no encontrado'}
-    else{
+    
         let objetoModificado = {
             title:'tomate',
             price:'12345',
@@ -70,8 +65,8 @@ router.put('/productos/:id',(req,res)=>{
             element.price = objetoModificado.price
             element.thumnail = objetoModificado.thumnail
         });
-        respuesta='Producto modificado'
-    }
+        respuesta='ok'
+    
     
     res.send(respuesta)    
 })
