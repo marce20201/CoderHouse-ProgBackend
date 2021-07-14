@@ -71,13 +71,10 @@ router.put('/productos/:id',(req,res)=>{
     res.send(respuesta)    
 })
 
-router.delete('/productos',(req,res)=>{
-
-    
-
-
-
-   /*  res.send('delete funciona') */
+router.delete('/productos/:id',(req,res)=>{
+    let indice = productos.indexOf(req.params.id)
+    productos.splice(indice,1)
+    res.send('eliminado') 
 })
 
 app.use('/api',router);

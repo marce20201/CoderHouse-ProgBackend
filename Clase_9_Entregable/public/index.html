@@ -35,6 +35,7 @@
         <hr>
         <button class="btn btn-primary" id="btn-add">Agregar</button>
         <button class="btn btn-primary" id="btn-upd">Modificar</button>
+        <button class="btn btn-primary" id="btn-del">Eliminar</button>
         <div class="form-add">
             <form action="/api/productos" method="POST">
                 <label for="title">Descripcion</label>
@@ -48,9 +49,16 @@
         </div>
         <div class="form-upd  hide-form">
             <label for="title">Id de Producto</label>
-            <input type="number" name="id" id="id" class="form-control" placeholder="ingrese un id aqui...">
+            <input type="number" name="id" id="idupd" class="form-control" placeholder="ingrese un id aqui...">
             <div class="sub-form-upd hide-form">
                 <button class="btn btn-success" id="btn-form-upd">Actualizar</button>
+            </div>  
+        </div>
+        <div class="form-del  hide-form">
+            <label for="title">Id de Producto a Eliminar</label>
+            <input type="number" name="id" id="iddel" class="form-control" placeholder="ingrese un id aqui...">
+            <div class="sub-form-del hide-form">
+                <button class="btn btn-danger" id="btn-form-dlt">Eliminar</button>
             </div>  
         </div>
         <div class="alert hide-form" role="alert" id="mensaje">
@@ -65,6 +73,7 @@
     <script>
         document.querySelector('#btn-add').addEventListener('click',()=>{
             document.querySelector('.form-upd').classList.add('hide-form')
+            document.querySelector('.form-del').classList.add('hide-form')
             document.querySelector('.form-add').classList.remove('hide-form')
             document.querySelector('.sub-form-upd').classList.add('hide-form')
             idProd.classList.remove('is-valid')
@@ -72,13 +81,23 @@
         })
         document.querySelector('#btn-upd').addEventListener('click',()=>{
             document.querySelector('.form-add').classList.add('hide-form')
+            document.querySelector('.form-del').classList.add('hide-form')
             document.querySelector('.form-upd').classList.remove('hide-form')
+            document.querySelector('#mensaje').classList.add('hide-form')
+        })
+        document.querySelector('#btn-del').addEventListener('click',()=>{
+            document.querySelector('.form-add').classList.add('hide-form')
+            document.querySelector('.form-upd').classList.add('hide-form')
+            document.querySelector('.form-del').classList.remove('hide-form')
             document.querySelector('#mensaje').classList.add('hide-form')
         })
 
 
         document.querySelector('#btn-form-upd').addEventListener('click',()=>{
             ajax(`http://localhost:8080/api/productos/${idProd.value}`,'PUT',actualizado,error)
+        })
+        document.querySelector('#btn-form-dlt').addEventListener('click',()=>{
+            ajax(`http://localhost:8080/api/productos/${idProdDel.value}`,'DELETE',borrado,error)
         })
 
         //Puente AJAX
@@ -95,7 +114,7 @@
             xhr.send()
         }
 
-        let idProd = document.querySelector('#id')
+        let idProd = document.querySelector('#idupd')
         idProd.addEventListener('blur',()=>{
             if(idProd.value==''){
                 idProd.classList.add('is-invalid')
@@ -104,6 +123,18 @@
             }else{
                 idProd.classList.remove('is-invalid')
                 ajax(`http://localhost:8080/api/productos/${idProd.value}`,'GET',todoOk,error)
+            }
+        })
+
+        let idProdDel = document.querySelector('#iddel')
+        idProdDel.addEventListener('blur',()=>{
+            if(idProdDel.value==''){
+                idProdDel.classList.add('is-invalid')
+                document.querySelector('.sub-form-del').classList.add('hide-form')
+                document.querySelector('#mensaje').classList.add('hide-form')
+            }else{
+                idProdDel.classList.remove('is-invalid')
+                ajax(`http://localhost:8080/api/productos/${idProdDel.value}`,'GET',todoOkDel,error)
             }
         })
 
@@ -126,6 +157,28 @@
             }
             
         }
+
+        const todoOkDel = () =>{
+            let respuesta = xhr.responseText
+            if(respuesta!=='[]'){
+                /* console.log(JSON.parse(respuesta)) */
+                idProdDel.classList.remove('is-invalid')
+                idProdDel.classList.add('is-valid')
+                document.querySelector('.sub-form-del').classList.remove('hide-form')
+                document.querySelector('#mensaje').classList.add('hide-form')
+            }else{
+                console.log('producto no encontrado')
+                idProdDel.classList.add('is-invalid')
+                document.querySelector('.sub-form-del').classList.add('hide-form')
+                document.querySelector('#mensaje').classList.remove('hide-form')
+                document.querySelector('#mensaje').classList.remove('alert-success')
+                document.querySelector('#mensaje').classList.add('alert-danger')
+                document.querySelector('#mensaje').innerHTML = "Producto no encontrado"
+            }
+            
+        }
+
+
         const error = () =>{
             console.log('error')
         }
@@ -137,6 +190,20 @@
                 document.querySelector('#mensaje').classList.add('alert-success')
                 document.querySelector('#mensaje').innerHTML = "Producto modificado"
             }     
+        }
+        
+        const borrado = () =>{
+            if(xhr.responseText=='eliminado'){
+                document.querySelector('#mensaje').classList.remove('hide-form')
+                document.querySelector('#mensaje').classList.remove('alert-danger')
+                document.querySelector('#mensaje').classList.add('alert-warning')
+                document.querySelector('#mensaje').innerHTML = "Producto eliminado"
+            }else{
+                document.querySelector('#mensaje').classList.remove('hide-form')
+                document.querySelector('#mensaje').classList.remove('alert-warning')
+                document.querySelector('#mensaje').classList.add('alert-danger')
+                document.querySelector('#mensaje').innerHTML = "Producto no encontrado"
+            }
         }
 
     </script>
