@@ -55,15 +55,34 @@ router.post('/productos',(req,res)=>{
 })
 
 router.put('/productos/:id',(req,res)=>{
-    let respuesta = productos.filter(dato => dato.id == [req.params.id]) 
-    if(respuesta=='')
-        respuesta = {error: 'producto no encontrado'}
+    let array = productos.filter(dato => dato.id == [req.params.id]) 
+    let respuesta=''
+    if(array=='')
+        array = {error: 'producto no encontrado'}
+    else{
+        let objetoModificado = {
+            title:'tomate',
+            price:'12345',
+            thumnail:'xxxxxxxxxxxx'
+        }
+        array.forEach(element => {
+            element.title = objetoModificado.title
+            element.price = objetoModificado.price
+            element.thumnail = objetoModificado.thumnail
+        });
+        respuesta='Producto modificado'
+    }
     
-    res.send(respuesta)
+    res.send(respuesta)    
 })
 
 router.delete('/productos',(req,res)=>{
-    res.send('delete funciona')
+
+    
+
+
+
+   /*  res.send('delete funciona') */
 })
 
 app.use('/api',router);
