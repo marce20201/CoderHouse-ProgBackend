@@ -1,0 +1,65 @@
+<div id="form-add">
+    <form action="/api/productos" method="post">
+    <label class="label" for="nombre">Nombre</label>
+    <input type="text" name="nombre" id="nombre" class="form-control" placeholder="ingrese un nombre...">
+    <label class="label" for="precio">Precio</label>
+    <input type="number" name="precio" id="precio" class="form-control" placeholder="ingrese un precio...">
+    <label class="label" for="foto">Foto URL</label>
+    <input type="text" name="foto" id="url" class="form-control" placeholder="ingrese una URL a la foto...">
+    <div id="btn-add">
+        <button type="submit" class="btn btn-success" disabled id="btn-addprd">Agregar producto</button>
+    </div>
+</form>
+</div>
+<div class="alert alert-warning hide msj" role="alert">
+
+</div>
+
+<script>
+    let campoNombre = document.querySelector('#nombre')
+    let campoPrecio = document.querySelector('#precio')
+    let campoFoto = document.querySelector('#url')
+    let btnAdd = document.querySelector('#btn-addprd')
+    let mensaje = document.querySelector('.msj')
+    
+    campoNombre.addEventListener('blur',()=>{
+        if(campoNombre.value.trim()==''){
+            campoPrecio.setAttribute('disabled',true)
+            campoFoto.setAttribute('disabled',true)
+            mensaje.classList.remove('hide')
+            mensaje.innerHTML = 'Campos vacios!'
+        }else{
+            campoPrecio.removeAttribute('disabled')
+            campoFoto.removeAttribute('disabled')
+            mensaje.classList.add('hide')
+        }
+    })
+
+    campoPrecio.addEventListener('blur',()=>{
+        if(campoPrecio.value.trim()==''){
+            campoNombre.setAttribute('disabled',true)
+            campoFoto.setAttribute('disabled',true)
+            mensaje.classList.remove('hide')
+            mensaje.innerHTML = 'Campos vacios!'
+        }else{
+            campoNombre.removeAttribute('disabled')
+            campoFoto.removeAttribute('disabled')
+            mensaje.classList.add('hide')
+        }
+    })
+
+    campoFoto.addEventListener('blur',()=>{
+        if(campoFoto.value.trim()==''){
+            campoNombre.setAttribute('disabled',true)
+            campoPrecio.setAttribute('disabled',true)
+            mensaje.classList.remove('hide')
+            mensaje.innerHTML = 'Campos vacios!'
+        }else{
+            campoNombre.removeAttribute('disabled')
+            campoPrecio.removeAttribute('disabled')
+            btnAdd.removeAttribute('disabled')
+            mensaje.classList.add('hide')
+        }
+    })
+
+</script>

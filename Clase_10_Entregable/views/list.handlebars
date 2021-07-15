@@ -1,0 +1,28 @@
+<div id="table-product">
+  {{#if productos}}
+    <table class="table table-light">
+    <thead>
+        <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Precio</th>
+        <th scope="col">Foto</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each productos}}
+            <tr>
+                <td>{{this.id}}</td>
+                <td>{{this.nombre}}</td>
+                <td>${{this.precio}}</td>
+                <td><img src={{this.foto}} class="img-prd" alt=""></td>
+            </tr>
+            {{/each}}
+    </tbody>
+    </table>
+    {{else}}
+        <div class="alert alert-warning" role="alert">
+            No hay productos cargados
+        </div>
+    {{/if}}
+</div>
