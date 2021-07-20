@@ -4,16 +4,18 @@ const routerApi = express.Router()
 const app = express()
 
 const Puerto = 8080 || process.env.PORT
-const server = app.listen(Puerto,()=>console.log(`Servidor en localhost:${Puerto}`))
+const server = app.listen(Puerto,()=>console.log(`Servidor iniciado en localhost:${Puerto}`))
 
+//Configuracion de EJS
+app.set('views', './views')
+app.set('view engine','ejs')
+app.use('/api',routerApi)
 app.use(urlencoded())
 app.use(json())
-
-app.set('views', './views')
-app.set('view engine', 'pug')
-app.use(express.static('public'))
-app.use('/api',routerApi)
-
+/* 
+routerApi.get('/productos/vista',(req,res)=>{
+    res.render('index',{mensaje:'mensaje desde servidor con ejs'})
+}) */
 
 
 const productos = []
@@ -31,7 +33,7 @@ routerApi.get('/productos/vista',(req,res)=>{
     res.render('list',{productos:productos})
 })
 
-routerApi.get('/productos/:id',(req,res)=>{
+ routerApi.get('/productos/:id',(req,res)=>{
     let array = productos.filter(dato => dato.id == [req.params.id])     
     res.render('list',{productos:array})
 })
@@ -67,8 +69,10 @@ routerApi.put('/productos/:id',(req,res)=>{
 
 routerApi.delete('/productos/:id',(req,res)=>{
     let indice = productos.indexOf([req.params.id])
-    /* console.log(indice) */
+     console.log(indice) 
     productos.splice(indice,1)
     res.send('producto eliminado') 
-})
+}) 
+
+
 
