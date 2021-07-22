@@ -7,15 +7,11 @@ const Puerto = 8080 || process.env.PORT
 const server = app.listen(Puerto,()=>console.log(`Servidor iniciado en localhost:${Puerto}`))
 
 //Configuracion de EJS
+app.use(urlencoded())
+app.use(json())
 app.set('views', './views')
 app.set('view engine','ejs')
 app.use('/api',routerApi)
-app.use(urlencoded())
-app.use(json())
-/* 
-routerApi.get('/productos/vista',(req,res)=>{
-    res.render('index',{mensaje:'mensaje desde servidor con ejs'})
-}) */
 
 
 const productos = []
@@ -26,12 +22,16 @@ const calculaId = () =>{
         return productos.length + 1;
 }
 
+//Pantalla agregar producto
 routerApi.get('/productos/agregar',(req,res)=>{  
     res.render('addproduct')
 })
+//Pantalla ver productos
 routerApi.get('/productos/vista',(req,res)=>{  
     res.render('list',{productos:productos})
 })
+
+
 
  routerApi.get('/productos/:id',(req,res)=>{
     let array = productos.filter(dato => dato.id == [req.params.id])     
@@ -39,7 +39,9 @@ routerApi.get('/productos/vista',(req,res)=>{
 })
 
 routerApi.post('/productos',(req,res)=>{
-     let {nombre,precio,foto} = req.body 
+     let nombre = req.body.nombre
+     let precio = req.body.precio
+     let foto = req.body.foto 
      let objNuevo = {
             id: calculaId(),
             nombre:nombre,
@@ -69,7 +71,6 @@ routerApi.put('/productos/:id',(req,res)=>{
 
 routerApi.delete('/productos/:id',(req,res)=>{
     let indice = productos.indexOf([req.params.id])
-     console.log(indice) 
     productos.splice(indice,1)
     res.send('producto eliminado') 
 }) 

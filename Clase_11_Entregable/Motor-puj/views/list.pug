@@ -9,7 +9,7 @@ html(lang="en")
         div.container
             h1 Entregable Clase 11
             hr
-            if productos 
+            if productos.length > 0 
                 table.table
                     thead 
                         tr 
@@ -23,7 +23,8 @@ html(lang="en")
                                 td=prd.id
                                 td=prd.nombre 
                                 td=prd.precio
-                                td=prd.foto 
+                                td
+                                  img(src=prd.foto, alt="") 
             else 
                 div(class="alert alert-warning" role="alert") 
                     p No existen productos
