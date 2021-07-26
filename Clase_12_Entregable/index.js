@@ -18,14 +18,43 @@ app.set('views','./views')
 app.use('/api',apiRouter)
 app.use(express.static('public'))
 
+const productos = []
+
+const calculaId = () =>{
+    if(productos=='')
+        return 1
+    else
+        return productos.length + 1;
+}
+
+
 //EndPoint
-apiRouter.get('/productos',(req,res)=>{
-    res.render('home')
-})
+/* apiRouter.get('/productos',(req,res)=>{
+    
+    res.render('home',io.emit('productos',productos))
+}) */
 
 io.on('connection',(socket)=>{
     console.log('usuario conectado')
 
-    socket.emit('mensaje',"Mensaje desde el servidor")
+    socket.emit('productos',productos)
+
+    socket.on('objeto-nuevo',data=>{
+        let ObjNuevo = {
+            id: calculaId(),
+            nombre: data.nombre,
+            precio: data.precio,
+            foto: data.foto
+        }
+        productos.push(ObjNuevo)
+        io.sockets.emit('productos',productos)  
+        console.log(productos)
+    })
+
+
 })
 
+    
+apiRouter.get('/productos',(req,res)=>{
+     res.render('home',{productos: productos})  
+})
