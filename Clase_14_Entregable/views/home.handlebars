@@ -1,0 +1,160 @@
+<div class="caja">
+    <hr>
+    <div class="caja-form">
+        <label for="nombre">Nombre</label>
+        <input type="text" class="form-control" name="nombre" id="form-name">
+        <label for="precio">Precio</label>
+        <input type="number" class="form-control" name="precio" id="form-price">
+        <label for="foto">URL foto</label>
+        <input type="text" class="form-control" name="foto" id="form-foto">
+    </div>
+    <div class="caja-form">
+        <button class="btn btn-primary" id="btn-add">Agregar</button>
+    </div>
+    <div id="table">
+        <table class="table table-light table-bordered">
+            <thead>
+                <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Foto</th>
+                </tr>
+            </thead>
+            <tbody id="table-body">
+                {{!-- {{#each productos}}
+                <tr>
+                    <td>{{this.id}}</td>
+                    <td>{{this.nombre}}</td>
+                    <td>${{this.precio}}</td>
+                    <td><img src={{this.foto}} class="img-prd" alt="" style="width: 50px;height: 50px;"></td>
+                </tr>
+                {{/each}} --}}
+            </tbody>
+        </table>
+    </div>
+    <div id="chat-form">
+        <h2 style="text-align: center;">Centro de Mensajes</h2>
+        <div class="alert alert-danger hide" role="alert" id="alerta" >
+
+        </div>
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email-form" class="form-control" placeholder="Tu email aqui...">
+        <div style="width: auto; height: 250px; overflow-y: scroll;overflow-x: scroll;margin-top: 10px;margin-bottom: 10px;" id="chat-box">
+            <ul id="chat-mensajes">
+
+            </ul>
+        </div>
+        <input type="text" name="mensaje" id="chat-input" class="form-control" placeholder="Tu mensaje aqui...">
+        <button class="btn btn-primary" id="btn-enviar">Enviar</button>
+    </div>
+
+</div>
+
+ 
+<script src="/socket.io/socket.io.js"></script>
+<script>
+        const socket = io();
+
+        let inputName = document.querySelector('#form-name')
+        let inputPrice = document.querySelector('#form-price')
+        let inputURL = document.querySelector('#form-foto')
+        document.querySelector('#btn-add').addEventListener('click',()=>{
+            let objNuevo = {
+                 nombre: inputName.value,
+                 precio: inputPrice.value,
+                 foto: inputURL.value
+            }
+
+           socket.emit('objeto-nuevo',objNuevo) 
+        })
+
+        let table = document.querySelector('#table-body')
+        socket.on('productos',data=>{
+                
+            let tr = document.createElement('tr')
+            let item = document.createElement('td')
+            let item2 = document.createElement('td')
+            let item3 = document.createElement('td')
+            let item4 = document.createElement('td')
+
+            table.appendChild(tr)
+            data.forEach(element=>{
+                tr.innerHTML = `<td>${element.id}</td>
+                                <td>${element.nombre}</td>
+                                <td>${element.precio}</td>
+                                <td><img src=${element.foto} alt="" style="width: 50px;height: 50px;"></td>`
+            })
+
+        })
+        
+        //Chat
+        let chatBox = document.querySelector('#chat-box')
+        let chatList = document.querySelector('#chat-mensajes')
+        let alertBox = document.querySelector('#alerta')
+        let inputMsg = document.querySelector('#chat-input')
+        let inputEmail = document.querySelector('#email-form')
+        let btnEnviar = document.querySelector('#btn-enviar')
+
+        inputEmail.addEventListener('blur',()=>{
+            if(inputEmail.value.trim() != ''){
+                alertBox.classList.add('hide')
+                inputMsg.removeAttribute('disabled')
+                btnEnviar.removeAttribute('disabled')
+                
+            }else{
+                alertBox.classList.remove('hide')
+                alertBox.innerHTML = 'Campo email vacio'
+                inputMsg.setAttribute('disabled',true)
+                btnEnviar.setAttribute('disabled',true)
+            }
+        })
+
+        inputMsg.addEventListener('blur',()=>{
+            if(inputMsg.value.trim() != ''){
+                alertBox.classList.add('hide')
+                btnEnviar.removeAttribute('disabled')
+            }else{
+                alertBox.classList.remove('hide')
+                alertBox.innerHTML = 'Mensaje vacio'
+                btnEnviar.setAttribute('disabled',true)
+            }
+        })
+
+
+
+        socket.on('mensajes',data=>{
+            
+             data.forEach(element=>{
+                  let mensajeNuevo = document.createElement('li')
+                  mensajeNuevo.innerHTML = `<p><span id='email'>${element.email}</span> [<span id='time'>${element.time}</span>] : <span id='mensaje'>${element.text}</span></p>`
+                   mensajeNuevo.classList.add('msj')
+                   chatList.appendChild(mensajeNuevo)
+             })
+        })
+
+
+        btnEnviar.addEventListener('click',()=>{
+
+            if(inputEmail.value.trim() == '' || inputMsg.value.trim()==''){
+                alertBox.classList.remove('hide')
+                alertBox.innerHTML = 'Campos vacios'
+                btnEnviar.setAttribute('disabled',true)
+            }else{
+                btnEnviar.removeAttribute('disabled')
+                let objMensaje = {
+                    email: inputEmail.value,
+                    text: inputMsg.value       
+                }
+                socket.emit('nuevo-mensaje',objMensaje)
+            }
+        })
+
+        socket.on('mensaje-nuevo',data=>{
+            let mensajeNuevo = document.createElement('li')
+            mensajeNuevo.innerHTML = `<p><span id='email'>${data.email}</span> [<span id='time'>${data.time}</span>] : <span id='mensaje'>${data.text}</span></p>`
+            mensajeNuevo.classList.add('msj')
+            chatList.appendChild(mensajeNuevo)
+        })
+
+</script>
