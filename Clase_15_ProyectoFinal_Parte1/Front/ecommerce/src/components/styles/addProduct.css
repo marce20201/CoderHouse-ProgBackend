@@ -1,0 +1,18 @@
+#contenedor-form{
+    padding: 10px;
+    border-color: grey;
+    border-width: 1px;
+    border-radius: 20px;
+}
+
+label{
+    font-weight: bold;
+    font-size: 15px;
+    margin-bottom: 10px;
+    color: black;
+}
+
+#btn-add{
+    color: white;
+
+}

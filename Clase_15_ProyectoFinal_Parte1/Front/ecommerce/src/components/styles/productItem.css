@@ -1,0 +1,30 @@
+#img-product{
+    width: 300px;
+    height: auto;
+    margin: auto;
+}
+.card{
+    padding: 10px;
+}
+
+#title-product{
+    text-align: left;
+}
+
+#contenedor-btn{
+    display: flex;
+}
+
+.btn{
+    margin-bottom: 10px;
+    margin-right: 10px;
+}
+
+#stock-sty{
+    font-weight: bold;
+    color: green;
+}
+#precio-sty{
+    font-weight: normal;
+    font-size: 20px;
+}
