@@ -1,0 +1,97 @@
+[{
+  "_id": {
+    "$oid": "612685bd5a63429d37629528"
+  },
+  "nombre": "Papel",
+  "precio": "120",
+  "foto": "xxxxxxx",
+  "stock": 0
+},{
+  "_id": {
+    "$oid": "612685bd5a63429d37629529"
+  },
+  "nombre": "Tijera",
+  "precio": "250",
+  "foto": "xxxxxxx",
+  "stock": 0
+},{
+  "_id": {
+    "$oid": "612685bd5a63429d3762952a"
+  },
+  "nombre": "Peugeot",
+  "precio": "580",
+  "foto": "xxxxxxx",
+  "stock": 0
+},{
+  "_id": {
+    "$oid": "612685bd5a63429d3762952b"
+  },
+  "nombre": "Tomate",
+  "precio": "1800",
+  "foto": "xxxxxxx",
+  "stock": 0
+},{
+  "_id": {
+    "$oid": "612685bd5a63429d3762952c"
+  },
+  "nombre": "Pan",
+  "precio": "1234",
+  "foto": "xxxxxxx",
+  "stock": 0
+},{
+  "_id": {
+    "$oid": "612685bd5a63429d3762952d"
+  },
+  "nombre": "Fideos",
+  "precio": "1231",
+  "foto": "xxxxxxx",
+  "stock": 0
+},{
+  "_id": {
+    "$oid": "612685bd5a63429d3762952e"
+  },
+  "nombre": "Crema",
+  "precio": "456",
+  "foto": "xxxxxxx",
+  "stock": 0
+},{
+  "_id": {
+    "$oid": "612685bd5a63429d3762952f"
+  },
+  "nombre": "Televisor",
+  "precio": "632",
+  "foto": "xxxxxxx",
+  "stock": 0
+},{
+  "_id": {
+    "$oid": "612685bd5a63429d37629530"
+  },
+  "nombre": "Celular",
+  "precio": "5000",
+  "foto": "xxxxxxx",
+  "stock": 0
+},{
+  "_id": {
+    "$oid": "612685bd5a63429d37629531"
+  },
+  "nombre": "Tablet",
+  "precio": "4500",
+  "foto": "xxxxxxx",
+  "stock": 0
+},{
+  "_id": {
+    "$oid": "6126875b5a63429d3762953c"
+  },
+  "nombre": "Iphone",
+  "precio": "3500",
+  "foto": "xxxxxxx",
+  "stock": 0
+},{
+  "_id": {
+    "$oid": "612792364e865b82f160bb8e"
+  },
+  "nombre": "Iphone",
+  "precio": "1000",
+  "foto": "xxxxxxx",
+  "stock": 0
+}]

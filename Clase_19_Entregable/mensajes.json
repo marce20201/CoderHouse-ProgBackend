@@ -1,0 +1,61 @@
+[{
+  "_id": {
+    "$oid": "6126868c5a63429d37629532"
+  },
+  "email": "ejemplo1@gmail.com",
+  "texto": "esto es un mensaje de ejemplo1"
+},{
+  "_id": {
+    "$oid": "6126868c5a63429d37629533"
+  },
+  "email": "ejemplo2@gmail.com",
+  "texto": "esto es un mensaje de ejemplo2"
+},{
+  "_id": {
+    "$oid": "6126868c5a63429d37629534"
+  },
+  "email": "ejemplo3@gmail.com",
+  "texto": "esto es un mensaje de ejemplo3"
+},{
+  "_id": {
+    "$oid": "6126868c5a63429d37629535"
+  },
+  "email": "ejemplo4@gmail.com",
+  "texto": "esto es un mensaje de ejemplo4"
+},{
+  "_id": {
+    "$oid": "6126868c5a63429d37629536"
+  },
+  "email": "ejemplo5@gmail.com",
+  "texto": "esto es un mensaje de ejemplo5"
+},{
+  "_id": {
+    "$oid": "6126868c5a63429d37629537"
+  },
+  "email": "ejemplo6@gmail.com",
+  "texto": "esto es un mensaje de ejemplo6"
+},{
+  "_id": {
+    "$oid": "6126868c5a63429d37629538"
+  },
+  "email": "ejemplo7@gmail.com",
+  "texto": "esto es un mensaje de ejemplo7"
+},{
+  "_id": {
+    "$oid": "6126868c5a63429d37629539"
+  },
+  "email": "ejemplo8@gmail.com",
+  "texto": "esto es un mensaje de ejemplo8"
+},{
+  "_id": {
+    "$oid": "6126868c5a63429d3762953a"
+  },
+  "email": "ejemplo9@gmail.com@gmail.comel",
+  "texto": "esto es un mensaje de ejemplo9"
+},{
+  "_id": {
+    "$oid": "6126868c5a63429d3762953b"
+  },
+  "email": "ejemplo10@gmail.com",
+  "texto": "esto es un mensaje de ejemplo10"
+}]
