@@ -9,7 +9,7 @@ module.exports = class {
     }
 
     async getAllMsg(){
-        await mensajesModel.find();
+        return mensajesModel.find();
     }
 
 }

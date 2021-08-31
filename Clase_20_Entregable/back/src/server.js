@@ -2,13 +2,13 @@ const express = require('express')
 const routesMsg = require('./routes/mensajes') 
 const cors = require('cors')
 const compression = require('compression')
-var {json,urlencoded} = require('body-parser');
+let {json,urlencoded} = require('body-parser');
 const router = express.Router()
 const app = express()
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
-/* const mensajesController = require('./controller/mensajes')
- */
+const mensajesController = require('./controller/mensajes')
+
 
 //Configuraciones
 app.use(json());
@@ -21,20 +21,25 @@ app.use(routesMsg(router))
 
 
 //Socket
-/* io.on('connection',(socket)=>{
+io.on('connection',(socket)=>{
     console.log('usuario conectado')
 
+    mensajesController.findMsgIo()
+        .then(res=>{
+            socket.emit('mensajes',res)
+        }).catch(err=>console.log(err))
+        
     //Se envia mensaje
     socket.on('nuevo-mensaje',(data)=>{
         //Se envia devuelta al cliente
         io.sockets.emit('recibido',data)
         //Se guarda en la BD
-        mensajesController.createMsg(data)
+        mensajesController.createMsgIo(data)
        
     })
 
 
-}) */
+})
 
 
 //Exporto el modulo app para ser iniciado en index.js
