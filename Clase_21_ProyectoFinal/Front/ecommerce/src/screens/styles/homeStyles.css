@@ -16,5 +16,24 @@
     margin-right: 20px;
     margin-top: 20px;
     display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#caja-buscar{
+    width: 300px;
+    display: flex;
+    flex-direction: row;
     justify-content: space-evenly;
+}
+.img-opt{
+    width: 30px;
+    height: auto;
+    margin-right: 20px;
+}
+
+#caja-agregar{
+    background-color: none;
+    display: flex;
+    flex-direction: row;
 }

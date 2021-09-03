@@ -1,9 +1,23 @@
 .link-personalizado{
     color: white;
+    font-weight: bold;
     text-decoration-line: none;
     margin-right: 20px;
     margin-left: 20px;
 }
 .link-personalizado:hover{
     color: white;
+}
+.navbar-brand{
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+#menu{
+    background-color: #FF0000;
+}
+#btn-Icon{
+    background-color: none;
+
 }

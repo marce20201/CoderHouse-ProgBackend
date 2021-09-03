@@ -10,16 +10,14 @@ const CartLogo = () =>{
     /* console.log(cont) */
 
     return(
-        <div id="cart-box">
             <Link to={`/cart`}>
-            <button className="btn btn-primary">
-             <img src={cartImage} id="img-cart"></img>
-             <span className="badge bg-light text-dark">
-               {cont}
-            </span>
-            </button>
+                <div id="cart-box">
+                    <img src={cartImage} id="img-cart"></img>
+                    <span className="badge bg-light text-dark">
+                        {cont}
+                    </span>    
+                </div>
             </Link>
-        </div>
     )
 }
 

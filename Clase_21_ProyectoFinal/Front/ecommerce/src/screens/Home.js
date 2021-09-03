@@ -8,6 +8,8 @@ import AddProduct from '../components/AddProduct';
 import Message from '../components/Message';
 import { useDispatch } from 'react-redux';
 import {addItem} from '../store/action/cart.action'
+import search from '../assets/search.png'
+import add from '../assets/add.png'
 
 const Home = () =>{
 
@@ -103,8 +105,17 @@ const Home = () =>{
             <NavBar />
             <div className="container">
                 <div id="caja-btn">
-                    <button className="btn btn-primary" onClick={()=>opcionAgregar()}>Listar / Agregar Producto</button>
+                    {/* <button className="btn btn-primary" onClick={()=>opcionAgregar()}>Listar / Agregar Producto</button> */}
+                    <div id="caja-buscar">
+                        {/* <img src={search} alt="" className="img-opt"></img> */}
+                        <input className="form-control" placeholder="Ingresa un ID de producto aqui..."/>
+                    </div>
+                    <div id="caja-agregar">
+                        <button className="btn">Agregar Producto</button>
+                       {/*  <img src={add} alt="" className="img-opt"></img> */}
+                    </div>
                 </div>
+
                 {agregar
                     ? <AddProduct guardaDatos={guardaDatos} agregaProducto={agregaProducto}/>
                     : <ListProduct guardaDatos={guardaBusqueda} buscarProducto={BuscarProducto} />}
