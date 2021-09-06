@@ -3,13 +3,12 @@ import NavBar from '../components/NavBar';
 import ProductColumn from '../components/ProductColumn';
 import './styles/homeStyles.css'
 import axios from 'axios';
-import ListProduct from '../components/ListProduct'
-import AddProduct from '../components/AddProduct';
 import Message from '../components/Message';
 import { useDispatch } from 'react-redux';
 import {addItem} from '../store/action/cart.action'
-import search from '../assets/search.png'
-import add from '../assets/add.png'
+import Search from '../components/Search';
+import {cargarProductos} from '../api'
+
 
 const Home = () =>{
 
@@ -41,16 +40,13 @@ const Home = () =>{
         }).catch(err=>console.log(err))
     }
 
-    const cargaProductos = () =>{
-       axios.get('http://localhost:8080/productos/listar')
-        .then((resultado)=>{
-          const productos = []
-          resultado.data.forEach(element=>{
+    const cargaProductos = async () =>{
+        const data = await cargarProductos()
+        const productos = []
+          data.forEach(element=>{
                productos.push(element)
            })
            setProducts(productos)
-          /*  console.log(productos) */
-        })
     }
 
     const BuscarProducto =()=>{
@@ -101,32 +97,20 @@ const Home = () =>{
     },[])
 
     return(
-        <div>
+        <body>
             <NavBar />
             <div className="container">
-                <div id="caja-btn">
-                    {/* <button className="btn btn-primary" onClick={()=>opcionAgregar()}>Listar / Agregar Producto</button> */}
-                    <div id="caja-buscar">
-                        {/* <img src={search} alt="" className="img-opt"></img> */}
-                        <input className="form-control" placeholder="Ingresa un ID de producto aqui..."/>
-                    </div>
-                    <div id="caja-agregar">
-                        <button className="btn">Agregar Producto</button>
-                       {/*  <img src={add} alt="" className="img-opt"></img> */}
-                    </div>
-                </div>
-
-                {agregar
+                <Search />
+                {/* {agregar
                     ? <AddProduct guardaDatos={guardaDatos} agregaProducto={agregaProducto}/>
-                    : <ListProduct guardaDatos={guardaBusqueda} buscarProducto={BuscarProducto} />}
-                <hr></hr>
+                    : <ListProduct guardaDatos={guardaBusqueda} buscarProducto={BuscarProducto} />} */}
                <div id="contenedor-productos">
                     {products.length > 0
                         ? <ProductColumn products={products} deletePrd={eliminaProducto} addCart={agregarCarrito}/>
                         : <Message tipo="alert alert-warning" mensaje="Sin productos"/>}
                </div>
             </div>
-        </div>
+        </body>
     )
 }
 

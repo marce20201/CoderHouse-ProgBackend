@@ -5,10 +5,29 @@ import sinImagen from './camara.png'
 
 const ProductItem = ({data,deletePrd,addCart}) =>{
 
-    /* console.log(data) */
+    console.log(data)
     return(
-        <div>
-            <div className="col">
+        <div className="col contenedor-prd-desc">
+            <p id="prd-codigo">Codigo: {data.stock}</p>
+            <div className="contenedor-img">
+                <img src={data.foto==''?sinImagen:data.foto} alt="..." id="img-product" />
+            </div>
+            <h5 id="title-product">{data.nombre}</h5>
+            <p id="descr-prd">{data.descripcion}</p>
+            <p id="precio-sty">${data.precio}</p>
+            <p id="stock-sty">{data.stock>0?'En Stock':'Sin Stock'}</p>
+        </div>
+        
+    )
+}
+
+export default ProductItem;
+
+
+/*
+<Modal nameModal="modalActualizar" tipo="Actualizar Datos" data={data} />
+
+<div className="col">
               <div className="card">
                 <p>Codigo: {data.stock}</p>
                 <img src={data.foto==''?sinImagen:data.foto} className="card-img-top" alt="..." id="img-product" />
@@ -28,11 +47,6 @@ const ProductItem = ({data,deletePrd,addCart}) =>{
             </div>
             </div>
 
-            <Modal nameModal="modalActualizar" tipo="Actualizar Datos" data={data} />
 
-        </div>
-        
-    )
-}
 
-export default ProductItem;
+*/

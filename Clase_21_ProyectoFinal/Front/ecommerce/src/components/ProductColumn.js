@@ -1,5 +1,6 @@
 import React from 'react'
 import ProductItem from './ProductItem';
+import './styles/productItem.css'
 
 const ProductColumn = ({products,deletePrd,addCart}) =>{
 

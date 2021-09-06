@@ -2,8 +2,11 @@ const productosServices = require('../services/productos')
 const prd = new productosServices()
 
 exports.createPrd = async (req,res,next) =>{
-    await prd.createProduct(req.body)
-    res.send('ok')
+    /* console.log(req.body.prd); */
+    await prd.createProduct(req.body.prd) 
+    res.send({
+        msg: 'Producto agregado!'
+    })
 }
 
 exports.getAllPrd = async (req,res,next) =>{

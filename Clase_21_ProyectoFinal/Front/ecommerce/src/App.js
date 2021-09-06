@@ -7,6 +7,7 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import Login from './screens/Login';
 import Home from './screens/Home';
 import Cart from './screens/Cart'
+import AgregarProducto from './screens/AgregarProducto';
 
 function App() {
   
@@ -20,6 +21,9 @@ function App() {
             </Route>
             <Route path="/cart">
               <Cart />
+            </Route>
+            <Route path="/agregar">
+              <AgregarProducto />
             </Route>
         </Switch>
     </BrowserRouter>

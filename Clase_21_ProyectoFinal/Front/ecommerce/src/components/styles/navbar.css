@@ -8,7 +8,20 @@
 .link-personalizado:hover{
     color: white;
 }
+.nav-link{
+    color: white;
+    font-size: 18px;
+}
+.nav-link:hover{
+    color: white;
+    font-size: 18px;
+}
 .navbar-brand{
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+}
+.navbar-brand:hover{
     color: white;
     font-weight: bold;
     font-size: 20px;

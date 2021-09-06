@@ -1,15 +1,42 @@
-#img-product{
-    width: 300px;
-    height: auto;
-    margin: auto;
+.contenedor-prd{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
-.card{
+
+.contenedor-prd-desc{
+    background-color: white;
+    width: 300px;
+    margin-left: 10px;
+    margin-bottom: 10px;
     padding: 10px;
+    border-radius: 20px;
+}
+
+
+.contenedor-img{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#img-product{
+    width: 250px;
+    height: auto;
+    margin-bottom: 10px;
+}
+#prd-codigo{
+    font-weight: bold;
+    color: grey;
 }
 
 #title-product{
     text-align: left;
 }
+#descr-prd{
+    text-align: justify;
+}
+
 
 #contenedor-btn{
     display: flex;

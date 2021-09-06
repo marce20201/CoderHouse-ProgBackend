@@ -4,7 +4,9 @@ const {Schema,model} = require('mongoose')
 const productosSchema = new Schema({
     nombre: String,
     descripcion: String,
+    codigo: Number,
     precio: Number,
+    stock:Number,
     foto: String
 })
 
