@@ -27,9 +27,9 @@ const NavBar = () =>{
                             </ul>
                         </li>
                     </ul>
-                    <div>
+                    {/* <div>
                         <CartLogo />
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </nav>

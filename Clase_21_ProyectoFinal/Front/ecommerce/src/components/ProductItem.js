@@ -1,14 +1,12 @@
 import React from 'react'
 import './styles/productItem.css'
-import Modal from './Modal'
 import sinImagen from './camara.png'
 
-const ProductItem = ({data,deletePrd,addCart}) =>{
+const ProductItem = ({data,deletePrd,addCart,updatePrd}) =>{
 
-    console.log(data)
     return(
         <div className="col contenedor-prd-desc">
-            <p id="prd-codigo">Codigo: {data.stock}</p>
+            <p id="prd-codigo">Codigo: {data.codigo}</p>
             <div className="contenedor-img">
                 <img src={data.foto==''?sinImagen:data.foto} alt="..." id="img-product" />
             </div>
@@ -16,6 +14,11 @@ const ProductItem = ({data,deletePrd,addCart}) =>{
             <p id="descr-prd">{data.descripcion}</p>
             <p id="precio-sty">${data.precio}</p>
             <p id="stock-sty">{data.stock>0?'En Stock':'Sin Stock'}</p>
+            <div id="contenedor-bnt">
+                <button className="btn btn-danger" onClick={()=>deletePrd(data.codigo)}>Eliminar</button>
+                <button className="btn btn-success" onClick={()=>updatePrd(data)}>Actualizar</button>
+                {/* <button className="btn btn-outline-primary">Añadir al Carrito</button> */}
+            </div>
         </div>
         
     )

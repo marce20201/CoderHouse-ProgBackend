@@ -2,9 +2,11 @@ import React,{useState} from 'react'
 import './styles/addProduct.css'
 import camara from './camara.png'
 
+
 const AddProduct = ({guardaDatos,agregaProducto}) =>{
 
     const [url,setUrl] = useState('')
+  
 
     return(
         <div className="" id="contenedor-form">
@@ -23,6 +25,7 @@ const AddProduct = ({guardaDatos,agregaProducto}) =>{
 
             <label for="stock">Cantidad de Stock</label>
             <input type="number" name="stock" className="form-control" onChange={(value)=>guardaDatos("stock",value)}/>
+
             <div className="contenedor-imagen">
                 <img src={url==''?camara:url} id="img-add"></img>
             </div>
