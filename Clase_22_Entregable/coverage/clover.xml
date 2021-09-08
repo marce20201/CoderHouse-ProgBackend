@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1631126527434" clover="3.2.0">
+  <project timestamp="1631126527435" name="All files">
+    <metrics statements="9" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4" elements="13" coveredelements="13" complexity="0" loc="9" ncloc="9" packages="1" files="1" classes="1"/>
+    <file name="index.js" path="C:\Users\Tom\Desktop\CoderHouse\CoderHouse-ProgBackend\Clase_22_Entregable\index.js">
+      <metrics statements="9" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
+      <line num="1" count="1" type="stmt"/>
+      <line num="2" count="1" type="stmt"/>
+      <line num="5" count="1" type="stmt"/>
+      <line num="6" count="1" type="stmt"/>
+      <line num="9" count="1" type="stmt"/>
+      <line num="10" count="1" type="stmt"/>
+      <line num="13" count="1" type="stmt"/>
+      <line num="14" count="1" type="stmt"/>
+      <line num="17" count="1" type="stmt"/>
+    </file>
+  </project>
+</coverage>
