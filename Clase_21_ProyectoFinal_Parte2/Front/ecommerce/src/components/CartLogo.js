@@ -3,6 +3,8 @@ import { useSelector } from 'react-redux';
 import './styles/cartlogo.css'
 import cartImage from './cart.png'
 import { Link } from 'react-router-dom';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {faShoppingCart} from '@fortawesome/free-solid-svg-icons'
 
 const CartLogo = () =>{
 
@@ -12,8 +14,8 @@ const CartLogo = () =>{
     return(
             <Link to={`/cart`}>
                 <div id="cart-box">
-                    <img src={cartImage} id="img-cart"></img>
-                    <span className="badge bg-light text-dark">
+                    <FontAwesomeIcon icon={faShoppingCart} id="cart-logo" />
+                    <span className="badge bg-light text-dark" id="cont-item">
                         {cont}
                     </span>    
                 </div>

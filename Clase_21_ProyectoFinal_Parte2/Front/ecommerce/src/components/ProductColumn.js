@@ -5,10 +5,15 @@ import './styles/productItem.css'
 const ProductColumn = ({products,deletePrd,addCart,updatePrd}) =>{
 
     return(
-        <div className="row row-cols-1 row-cols-md-3 g-4">
+        <div id="box-item">
             {products.map(data=>{
                 return(
-                    <ProductItem data={data} deletePrd={deletePrd} addCart={addCart} updatePrd={updatePrd} />  
+                    <ProductItem 
+                        data={data} 
+                        deletePrd={deletePrd} 
+                        addCart={addCart} 
+                        updatePrd={updatePrd} 
+                    />  
                 )
             })}
         </div>

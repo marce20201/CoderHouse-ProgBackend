@@ -2,6 +2,8 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import './styles/navbar.css'
 import CartLogo from "./CartLogo.js";
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import { faBars } from '@fortawesome/free-solid-svg-icons';
 
 const NavBar = () =>{
 
@@ -11,25 +13,28 @@ const NavBar = () =>{
             <div className="container-fluid">
                 <a className="navbar-brand" href="#">E-Commerce App</a>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span className="navbar-toggler-icon" id="btn-Icon"></span>
+                    {/* <span className="navbar-toggler-icon" id="btn-Icon"></span> */}
+                    <FontAwesomeIcon icon={faBars} id="btn-menu"/>
                 </button>
-                <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                <div className="collapse navbar-collapse" id="navbarNav"> 
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                         <li className="nav-item">
                             <Link to={`/`} className="nav-link">Inicio</Link>
                         </li>
-                        <li className="nav-item dropdown">
+                        {/* <li className="nav-item dropdown">
                             <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Productos
                             </a>
                             <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><Link to={`/agregar`} className="dropdown-item">Agregar Producto</Link></li>
                             </ul>
-                        </li>
+                        </li> */}
                     </ul>
-                    {/* <div>
-                        <CartLogo />
-                    </div> */}
+                    <div id="box-btn-right">
+                       <CartLogo />
+                       <button className="btn btn-navbar" id="btn-regist">Registrarse</button>
+                       <button className="btn btn-navbar" id="btn-login">Iniciar Sesion</button>
+                    </div>
                 </div>
             </div>
         </nav>

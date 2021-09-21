@@ -1,8 +1,12 @@
 #contenedor-form{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
 }
+.input{
+    margin: 10px;
+}
+
 
 label{
     font-weight: unset;

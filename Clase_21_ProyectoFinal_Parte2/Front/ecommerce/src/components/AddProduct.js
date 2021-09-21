@@ -1,6 +1,7 @@
 import React,{useState} from 'react'
 import './styles/addProduct.css'
 import camara from './camara.png'
+import { TextField, Box } from '@mui/material'
 
 
 const AddProduct = ({guardaDatos,agregaProducto}) =>{
@@ -9,8 +10,22 @@ const AddProduct = ({guardaDatos,agregaProducto}) =>{
   
 
     return(
-        <div className="" id="contenedor-form">
-          <div id="cajaform">
+        <div id="contenedor-form">
+            <TextField className="input" margin="normal" label="Nombre" variant="filled" size="small" onChange={(value)=>guardaDatos("nombre",value)}/> 
+            <TextField className="input" margin="normal" label="Nombre" variant="filled" size="small" onChange={(value)=>guardaDatos("nombre",value)}/>
+            <TextField className="input" margin="normal" label="Nombre" variant="filled" size="small" onChange={(value)=>guardaDatos("nombre",value)}/>
+            <TextField className="input" margin="normal" label="Nombre" variant="filled" size="small" onChange={(value)=>guardaDatos("nombre",value)}/>
+            <TextField className="input" margin="normal" label="Nombre" variant="filled" size="small" onChange={(value)=>guardaDatos("nombre",value)}/>
+        </div>
+    
+    )
+}
+
+export default AddProduct;
+
+/* 
+    <div id="cajaform">
+          
           <label className="control-label" for="nombre">Nombre</label>
             <input type="text" name="nombre" className="form-control" onChange={(value)=>guardaDatos("nombre",value)}/>
 
@@ -37,9 +52,4 @@ const AddProduct = ({guardaDatos,agregaProducto}) =>{
               <button className="btn btn-primary" id="btn-add" onClick={agregaProducto}>Agregar</button>
             </div>
           </div> 
-        </div>
-    )
-}
-
-export default AddProduct;
-
+*/

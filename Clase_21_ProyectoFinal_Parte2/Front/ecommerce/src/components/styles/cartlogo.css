@@ -1,0 +1,13 @@
+#cart-logo{
+   color: #FFFFFF;
+   font-size: 20px;
+   margin: 5px;
+}
+
+#cart-box{
+    display: flex;
+    flex-direction: row;
+}
+#cont-item{
+    margin: 5px;
+}
