@@ -146,12 +146,39 @@ const Home = () =>{
     return(
         <body>
             <NavBar />
-            <Search guardaBusqueda={guardaBusqueda} buscarCod={BuscarProductoporCod} buscarNombre={BuscarProductoporNombre} buscarPrecios={BuscarProductoRangoPrecios} buscarStock={BuscarProductoRangoStock} modalAdd={modalAddOpen} />
-            <ModalAddPrd show={modalAdd} close={modalAddClose} cargaPrd={cargaProductos} isLoading={setIsFetch}/>
-           
+            
+            <Search 
+                guardaBusqueda={guardaBusqueda} 
+                buscarCod={BuscarProductoporCod} 
+                buscarNombre={BuscarProductoporNombre} 
+                buscarPrecios={BuscarProductoRangoPrecios} 
+                buscarStock={BuscarProductoRangoStock} 
+                modalAdd={modalAddOpen}
+            />
+            
+            <ModalAddPrd 
+                show={modalAdd} 
+                close={modalAddClose} 
+                cargaPrd={cargaProductos} 
+                isLoading={setIsFetch}
+            />
+
+            <ModalUpdate 
+                show={showModal} 
+                onHide={onClose} 
+                producto={prdUpdate} 
+                cargarProductos={cargaProductos}
+            />
+            
             {isFetch && <Cargando />}
+            
             <div className="container" id="box-items">
-                <ProductColumn products={products} deletePrd={eliminaProducto} /* addCart={agregarCarrito} */ updatePrd={updatePrd}/>
+                <ProductColumn 
+                    products={products} 
+                    deletePrd={eliminaProducto} 
+                    /* addCart={agregarCarrito} */ 
+                    updatePrd={updatePrd}
+                />
             </div>
         </body>
     )

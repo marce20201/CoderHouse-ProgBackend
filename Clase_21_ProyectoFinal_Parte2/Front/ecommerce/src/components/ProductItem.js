@@ -25,9 +25,7 @@ const ProductItem = ({data,deletePrd,addCart,updatePrd}) =>{
                     <div id="contenedor-btn">
                         {/* <button className="btn btn-danger" onClick={()=>deletePrd(data.id)}>Eliminar</button> */}
                         <button className="btn btn-options" id="btn-cart" /* onClick={()=>addCart(data.id)} */>Agregar al Carrito</button>
-                        <button type="button" className="btn btn-options" id="btn-update" data-bs-toggle="modal" data-bs-target="#modalActualizar">
-                        Actualizar
-                    </button>
+                        <button type="button" className="btn btn-options" id="btn-update" onClick={()=>updatePrd(data)}>Actualizar</button>
                     </div>
                  </div>
            

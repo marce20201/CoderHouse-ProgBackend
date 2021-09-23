@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
 import './styles/addProduct.css'
 import camara from './camara.png'
-import { TextField, Box } from '@mui/material'
+import { TextField, Button } from '@mui/material'
 
 
 const AddProduct = ({guardaDatos,agregaProducto}) =>{
@@ -11,11 +11,14 @@ const AddProduct = ({guardaDatos,agregaProducto}) =>{
 
     return(
         <div id="contenedor-form">
-            <TextField className="input" margin="normal" label="Nombre" variant="filled" size="small" onChange={(value)=>guardaDatos("nombre",value)}/> 
-            <TextField className="input" margin="normal" label="Nombre" variant="filled" size="small" onChange={(value)=>guardaDatos("nombre",value)}/>
-            <TextField className="input" margin="normal" label="Nombre" variant="filled" size="small" onChange={(value)=>guardaDatos("nombre",value)}/>
-            <TextField className="input" margin="normal" label="Nombre" variant="filled" size="small" onChange={(value)=>guardaDatos("nombre",value)}/>
-            <TextField className="input" margin="normal" label="Nombre" variant="filled" size="small" onChange={(value)=>guardaDatos("nombre",value)}/>
+            <TextField className="input" margin="normal" type="text" label="Nombre" variant="filled" size="small" onChange={(value)=>guardaDatos("nombre",value)}/> 
+            <TextField className="input" margin="normal" type="text" label="Descripcion" variant="filled" size="small" onChange={(value)=>guardaDatos("nombre",value)}/>
+            <TextField className="input" margin="normal" type="number" label="Precio" variant="filled" size="small" onChange={(value)=>guardaDatos("nombre",value)}/>
+            <TextField className="input" margin="normal" type="number" label="Codigo" variant="filled" size="small" onChange={(value)=>guardaDatos("nombre",value)}/>
+            <TextField className="input" margin="normal" type="text" label="URL Foto" variant="filled" size="small" onChange={(value)=>guardaDatos("nombre",value)}/>
+            <div className="contenedor-boton">
+              <button className="btn btn-primary" id="btn-add" onClick={agregaProducto}>Agregar</button>
+            </div>
         </div>
     
     )

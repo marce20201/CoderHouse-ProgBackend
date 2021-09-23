@@ -3,7 +3,6 @@ import './styles/addPrdstyles.css'
 import NavBar from "../components/NavBar";
 import AddProduct from "../components/AddProduct";
 import {agregarProducto} from '../api'
-import ModalMessage from "../components/Modal";
 import { Link } from 'react-router-dom';
 
 const AgregarProducto = () =>{
@@ -38,7 +37,7 @@ const AgregarProducto = () =>{
         <div>
             <NavBar />
             <div className="container">
-                <ModalMessage show={show} onHide={onClose} message={message} route="/" textevent="Ir a Inicio"/>
+             
                 <AddProduct guardaDatos={guardaDatos} agregaProducto={agregaProducto} />
             </div>
         </div>

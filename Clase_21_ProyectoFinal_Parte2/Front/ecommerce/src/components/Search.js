@@ -2,6 +2,7 @@ import React,{useState} from 'react'
 import './styles/searchstyles.css'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faSearch,faFilter,faPlus} from '@fortawesome/free-solid-svg-icons'
+import { TextField, InputAdornment } from '@mui/material'
 
 const Search = ({guardaBusqueda,buscarCod,buscarNombre,buscarPrecios,buscarStock,modalAdd}) =>{
 
