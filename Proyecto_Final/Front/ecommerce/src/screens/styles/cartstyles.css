@@ -1,0 +1,16 @@
+.container{
+    margin-top: 10px;
+}
+#box-cart{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+#box-cart-prd{
+    background-color: white;
+    width: auto;
+    height: auto;
+    padding: 10px;
+    border-radius: 10px;
+}

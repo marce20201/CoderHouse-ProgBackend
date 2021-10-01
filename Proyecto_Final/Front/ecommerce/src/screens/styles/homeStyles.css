@@ -1,0 +1,30 @@
+body{
+    background-color:#FAFAFA;
+}
+#box-agregar{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+#btn-agregar{
+    border-color: #E4572E;
+    color: #E4572E;
+    background-color: #FFFFFF;
+    border-radius: 12px;
+    text-transform: capitalize;
+    font-size: 15px;
+}
+
+#box-home{
+    background-color: #FFFFFF;
+}
+
+#btn-add{
+    margin-top: 10px;
+}
+
+@media only screen and (max-width: 780px)  {
+    #box-home{
+        width: auto;  
+    }
+}

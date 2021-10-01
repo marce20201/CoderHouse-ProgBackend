@@ -1,0 +1,59 @@
+.link-personalizado{
+    color: white;
+    font-weight: bold;
+    text-decoration-line: none;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+.link-personalizado:hover{
+    color: white;
+}
+.nav-link{
+    color: white;
+    font-size: 18px;
+}
+.nav-link:hover{
+    color: white;
+    font-size: 18px;
+}
+.navbar-brand{
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+}
+.navbar-brand:hover{
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+#menu{
+    background-color: #29335C;
+}
+#btn-menu{
+    color: #FFFFFF;
+}
+#box-btn-right{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-navbar{
+    width: 120px;
+    margin: 3px;
+    border-radius: 12px;
+    padding: 8px;
+    font-weight: normal;
+    font-size: 15px;
+}
+#btn-regist{
+    color: #FFFFFF;
+    border: 1px solid #FFFFFF;
+}
+#btn-login{
+    font-weight: normal;
+    color: #FFFFFF;
+    background-color: #E4572E;
+}

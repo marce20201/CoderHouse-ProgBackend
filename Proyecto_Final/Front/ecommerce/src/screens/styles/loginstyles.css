@@ -1,0 +1,56 @@
+#box-login{
+    width: auto;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#box-form{
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+#login-title{
+    text-align: center;
+}
+#box-btn-primary{
+
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+}
+#box-btn-secundary{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+}
+#btn-login-form{
+    width: 300px;
+    margin: 5px;
+    text-transform: capitalize;
+    background-color: #E4572E;
+}
+#btn-signup-form{
+    margin: 5px;
+    text-transform: capitalize;
+}
+#options{
+    text-align: center;
+}
+#box-otros{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 10px;
+}
+#btn-facebook-form{
+    width: 300px;
+    text-transform: none;
+    background-color: #002AAE;
+}
