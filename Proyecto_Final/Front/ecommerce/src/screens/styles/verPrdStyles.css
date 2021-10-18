@@ -1,0 +1,97 @@
+#box-principal{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+#box-producto{
+    width: 1600px;
+    height: auto;
+    border-radius: 12px; 
+    background-color: #FFFFFF; 
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+#box-image{
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#box-body{
+    width: 550px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin: 5px;
+    padding: 10px;
+}
+
+/* Estilos de los items */
+#img-verprd{
+    width: auto;
+    height: 300px;
+}
+#box-price-Fav{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+#fav-btn{
+    color: #FF0000;
+    font-size: 30px;
+}
+#price-prd{
+    color: #028800;
+    font-size: 25px;
+}
+#prd-descripcion{
+    margin: 5px;
+    text-align: justify;
+    font-size: 18px;
+}
+
+#box-cantidad-prd{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+#titulo-selec-cant{
+    font-weight: normal;
+}
+
+#box-selec-cantidad{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+#contador-input{
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+#box-verpd-btn{
+    margin: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+#btn-buy{
+    margin: 5px;
+    font-size: 15px;
+    width: 250px;
+    text-transform: none;
+    background-color: #E4572E;
+    
+}
+#btn-cart{
+    margin: 5px;
+    font-size: 15px;
+    width: 250px;
+    text-transform: none;
+}

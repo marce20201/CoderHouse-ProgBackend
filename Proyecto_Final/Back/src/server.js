@@ -7,12 +7,13 @@ const http = require('http').Server(app);
 const io = require('socket.io')(http);
 const session = require('express-session')
 const passport = require('passport')
-const authPassport = require('./auth')
 
 //Requiero las rutas
 const routesPrd = require('./routes/productos') 
 const routesCart = require('./routes/carrito')
 const routesUser = require('./routes/usuarios')
+const routesCateg = require('./routes/categorias')
+const routesFav = require('./routes/favoritos')
 const router = express.Router()
 
 
@@ -32,13 +33,16 @@ app.use(session({
 app.use(passport.initialize())
 app.use(passport.session())
 
+
 //Rutas
-app.use('/auth',authPassport)
-
-
 app.use(routesPrd(router))
 app.use(routesCart(router)) 
 app.use(routesUser(router))
+app.use(routesCateg(router))
+app.use(routesFav(router))
+
+
+
 
 //Exporto el modulo app para ser iniciado en index.js
 module.exports = {

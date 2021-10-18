@@ -113,3 +113,5 @@ export const borraCarrito = async (prdid) =>{
 
     return respuesta;
 }
+
+//Funciones de usuario

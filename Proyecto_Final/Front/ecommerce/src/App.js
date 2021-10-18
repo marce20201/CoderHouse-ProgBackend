@@ -8,6 +8,8 @@ import Login from './screens/Login';
 import Home from './screens/Home';
 import Cart from './screens/Cart'
 import AgregarProducto from './screens/AgregarProducto';
+import Registrarse from './screens/Registrarse';
+import VerProducto from './screens/VerProducto';
 
 function App() {
   
@@ -28,6 +30,8 @@ function App() {
             <Route path="/login">
               <Login />
             </Route>
+            <Route path="/registrarse" component={Registrarse}/>
+            <Route path="/verproducto" component={VerProducto}/>
         </Switch>
     </BrowserRouter>
   );

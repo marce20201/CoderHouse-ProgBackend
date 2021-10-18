@@ -21,6 +21,12 @@ const ProductColumn = () =>{
     const [modalAdd,setModalAdd] = useState(false)
     const dispatch = useDispatch()
 
+    const [expanded, setExpanded] = useState(false);
+
+    const handleExpandClick = () => {
+        setExpanded(!expanded);
+    };
+
     const onCloseModalAdd = () => setModalAdd(!modalAdd)
     const onClose = () => setShowModal(!showModal)
 
@@ -122,21 +128,36 @@ const ProductColumn = () =>{
 
     return(
         <div>
-            <div className="container" id="box-buttons">
+            {/* <div className="container" id="box-buttons">
                 <div id="box-agregar">
-                    <Button variant="contained" id="btn-filtros" /* onClick={()=>setModalAdd(true)} endIcon={<FontAwesomeIcon icon={faPlus} color="#E4572E"/>} */>Filtros</Button>
+                    <Button variant="contained" id="btn-filtros" onClick={()=>setModalAdd(true)} endIcon={<FontAwesomeIcon icon={faPlus} color="#E4572E"/>}>Filtros</Button>
                     <Button variant="outlined" id="btn-agregar" onClick={()=>setModalAdd(true)} endIcon={<FontAwesomeIcon icon={faPlus} color="#E4572E"/>}>Agregar</Button>
                 </div>
-            </div>
+            </div> */}
 
-            <div id="box-productos" className="container">
-            
+            <div className="container">
+                <h3 id="prd-title">Productos</h3>
+                <div id="box-productos">
+                    {products.map((data)=>{
+                            return(
+                                <ProductItem 
+                                    key={data.codigo}
+                                    data={data} 
+                                    expandir={expanded}
+                                    expandirEvent={handleExpandClick}
+                                    deletePrd={eliminaProducto} 
+                                    updatePrd={updatePrd} 
+                                    addCart={agregaProductoCarrito}
+                                />  
+                            )
+                        })}
+                </div>
 
-                <ModalAddPrd 
+               {/*  <ModalAddPrd 
                     show={modalAdd} 
                     close={onCloseModalAdd} 
                     cargaPrd={cargaProductos} 
-                    /* isLoading={setIsFetch} */
+                    
                 />
                 <ModalUpdate 
                     show={showModal} 
@@ -164,7 +185,7 @@ const ProductColumn = () =>{
                             />  
                         )
                     })}
-                </div>
+                </div> */}
             </div>
         </div>
     )

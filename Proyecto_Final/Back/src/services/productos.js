@@ -15,6 +15,11 @@ module.exports = class {
         return productosModel.findOne({'codigo': prdCod})
     }
 
+    async getprdId(id){
+        return productosModel.findById(id)
+    }
+
+
     async getprdName(prdName){
         return productosModel.findOne({'nombre':prdName})
     }
@@ -50,5 +55,19 @@ module.exports = class {
                 'precio':prd.precio,
                 'stock':prd.stock
             })
+    }
+
+    async buscaporCategoria(cat,prdId){
+        productosModel.di
+        try {
+             return productosModel.find({
+                 $and:[
+                     {'categoria': cat },
+                     {$ne:{'_id':prdId}}
+                 ]
+             })
+        } catch (error) {
+            return 'Existio un error al conectarse a la base de datos'
+        }
     }
 }

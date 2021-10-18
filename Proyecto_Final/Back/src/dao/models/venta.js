@@ -1,7 +1,8 @@
 const {Schema,model} = require('mongoose')
 
-//Creo la estructura de datos que tendran los productos
-const productosSchema = new Schema({
+const ventaSchema = new Schema({
+    usuarioId: String,
+    productoId: String,
     nombre: String,
     descripcion: String,
     codigo: Number,
@@ -11,5 +12,3 @@ const productosSchema = new Schema({
     categoria: String,
     vendedor: String,
 })
-
-module.exports = model('Productos',productosSchema);

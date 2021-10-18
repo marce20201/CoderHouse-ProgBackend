@@ -1,0 +1,34 @@
+#box-registrarse{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+#box-form-registrarse{
+    background-color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    padding: 10px;
+    border: 1px solid #F1F1F1;
+    border-radius: 12px;
+}
+#box-form-title{
+    text-align: center;
+
+}
+#box-from-btn{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#btn-regist-crear{
+    margin: 5px;
+    text-transform: none;
+}
+#btn-regist-login{
+    margin: 5px;
+    text-transform: none;
+}
+#link-login{
+    text-decoration: none;
+}

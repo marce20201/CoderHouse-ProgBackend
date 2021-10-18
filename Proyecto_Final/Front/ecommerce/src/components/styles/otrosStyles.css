@@ -1,0 +1,8 @@
+#box-categoria-prd{
+    margin-top: 10px;
+}
+#box-productos-categoria{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}

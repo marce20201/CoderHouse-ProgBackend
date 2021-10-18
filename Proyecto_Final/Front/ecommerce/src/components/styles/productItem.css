@@ -1,4 +1,64 @@
-#box-buttons{
+/* Estilos de ProductColumn */
+#prd-title{
+    font-size: 25px;
+}
+#box-productos{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+/* Estilos del item */
+#card-body{
+    width: 300px;
+    height: 430px;
+    padding: 5px;
+    margin: 10px;
+}
+#card-image-box{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 5px;
+}
+#card-image{
+    width: auto;
+    height: 150px;
+}
+#card-actions{
+    padding: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+#card-precio{
+    font-weight: bold;
+    font-size: 20px;
+}
+.card-stock{
+    font-weight: bold;
+    font-size: 16px; 
+    color: #007320;
+}
+#card-vendedor{
+    font-weight: normal;
+    font-size: 15px; 
+    color: #646464;
+}
+#card-prd-nombre{
+    /* font-weight: normal; */
+    font-size: 18px;
+}
+#card-fav{
+    font-size: 30px;
+    color: #F50000;
+}
+#card-action-area{
+    border-radius: 12px;
+}
+
+/* #box-buttons{
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
@@ -12,15 +72,11 @@
 }
 #btn-filtros{
     display: none;
-}
-
-#box-productos{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
+} */
 
 
+
+/* 
 #box-item{
     width: auto;
     display: flex;
@@ -178,4 +234,4 @@
         justify-content: center;
     }
     
-}
+} */
