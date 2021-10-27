@@ -4,6 +4,7 @@ const compression = require('compression')
 const cors = require('cors')
 const app = express()
 
+app.use(express.static('public'))
 app.use(json())
 app.use(urlencoded())
 app.use(compression())
@@ -11,7 +12,7 @@ app.use(cors())
 
 
 app.get('/',(req,res,next)=>{
-    res.send('<h1>Primer servidor en la nube</h1>')  
+    res.sendFile(__dirname + '/public/index.html') 
 })
 
 module.exports = app;
