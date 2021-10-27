@@ -1,10 +1,33 @@
 const productosModel = require('../dao/models/productos')
+const usrModel = require('../dao/models/usuarios')
+
 
 //Metodos de productos
 module.exports = class {
 
     async createProduct(prd){
-        await productosModel.create(prd)
+        let nuevoPrd = {}
+        try {
+            const user = await usrModel.findById({'_id':prd.usuarioId})
+            if(user){
+                nuevoPrd = {
+                    nombre: prd.nombre,
+                    descripcion:prd.descripcion,
+                    codigo:prd.codigo,
+                    precio:prd.precio,
+                    stock:prd.stock,
+                    imagen:prd.imagen,
+                    categoria:prd.categoria,
+                    vendedor:user.nombre
+                }
+                await productosModel.create(nuevoPrd)
+                return true
+            }else{
+                return false
+            }
+        } catch (error) {
+            return error
+        }
     }
 
     async getAllProduct(){

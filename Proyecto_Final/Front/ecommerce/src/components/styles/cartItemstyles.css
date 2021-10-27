@@ -1,4 +1,4 @@
-#carrito{
+/* #carrito{
     padding: 10px;
     width: auto;
 }
@@ -50,4 +50,31 @@
     padding: 10px;
     border: 1px solid #88DBFF;
     border-radius: 20px;
+} */
+
+#cart-item-box{
+    margin: 5px;
+    border: 1px solid #DBDBDB;
+    padding: 10px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+#cart-item-img-box{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#cart-item-img{
+    width: auto;
+    height: 100px;
+}
+
+#cart-item-detail{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 }

@@ -11,7 +11,7 @@ import { IconButton } from '@mui/material';
 import {FavoriteBorder,Home} from '@mui/icons-material'
 import Favoritos from './Favoritos';
 
-const NavBar = () =>{
+const NavBar = ({openCart}) =>{
     const history = useHistory()
     const dispatch = useDispatch()
     const usr = useSelector(state=>state.usr.token)
@@ -50,7 +50,7 @@ const NavBar = () =>{
 
                        {usr && <Link to={`/`} className="nav-link">Vender</Link>}
                        <IconButton onClick={()=>abrirCerrarFavoritos()}><FavoriteBorder id="fav-icon" /></IconButton>
-                       <CartLogo />
+                       <CartLogo openCart={openCart} />
                       {usr  
                         ? <div>
                              <button className="btn btn-navbar" id="btn-regist" onClick={()=>cerrarCuenta()}>Cerrar cuenta</button>

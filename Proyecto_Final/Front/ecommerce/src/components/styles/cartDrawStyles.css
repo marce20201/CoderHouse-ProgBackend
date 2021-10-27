@@ -1,0 +1,23 @@
+#box-cart-drawer{
+    padding: 10px;
+    width: 400px;
+}
+
+#box-option-top{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+#box-title-cart{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+#box-total-btn{
+ padding: 10px;
+}
+#box-btn-cart{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}

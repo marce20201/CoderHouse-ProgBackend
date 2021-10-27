@@ -2,15 +2,17 @@ const productosServices = require('../services/productos')
 const prd = new productosServices()
 
 exports.createPrd = async (req,res,next) =>{
-    /* console.log(req.body); */
     try {
-        await prd.createProduct(req.body.prd) 
-        res.send({
-            msg: 'Producto agregado!'
-        })
+        const result = await prd.createProduct(req.body)
+        if(result){
+            res.json({res:result,msg:"Producto agregado"})
+        }else{
+            res.json({res:result,msg:"Ocurrio un error en el servidor"})
+        }
     } catch (error) {
         res.status(500).send('Ocurrio un error en la peticion')
     }
+    
 }
 
 exports.getAllPrd = async (req,res,next) =>{
