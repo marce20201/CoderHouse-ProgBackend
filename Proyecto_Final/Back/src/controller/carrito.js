@@ -21,13 +21,20 @@ exports.addPrdCart = async (req,res,next) =>{
     }
 }
 
-exports.getAllPrdCart = /* async */ (req,res,next) =>{
-    /* try {
-        const productos = await cart.getAllPrdCart()
-        res.json(productos)
+exports.getAllPrdCart = async (req,res,next) =>{
+    try {
+        /* 615f6308b4e9ad2dcef734dc */
+        let {id} = req.params
+        /*  console.log(id); */
+        const data = await cart.getAllPrdCart(id)
+        if(data){
+            res.json({res:true,data})
+        }else{
+            res.json({res: false,msg:"No existen productos en tu carrito"})
+        }
     } catch (error) {
         res.status(500).send('Ocurrio un error en la peticion')
-    } */
+    }
 }
 
 exports.dltPrdCart = async(req,res,next)=>{
@@ -38,4 +45,9 @@ exports.dltPrdCart = async(req,res,next)=>{
     } catch (error) {
         res.status(500).send('Ocurrio un error en la peticion')
     }
+}
+
+exports.updPrdCant = async (req,res,next) =>{
+    await cart.updCart(req.body)
+    res.send('ok')
 }

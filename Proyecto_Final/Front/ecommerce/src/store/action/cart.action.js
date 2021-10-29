@@ -1,10 +1,16 @@
 export const ADDITEM = 'ADDITEM'
 export const DLTITEM = 'DLTITEM'
 
-export const addItem = () =>({
-    type:ADDITEM,
-})
+export const addItem = (item) =>{
+    /* console.log("Entra en el action");
+    console.log(item); */
+    return ({
+        type:ADDITEM,
+        payload:item
+    })
+}
 
-export const dltItem = ()=>({
+export const dltItem = (item)=>({
     type:DLTITEM,
+    payload: item
 })

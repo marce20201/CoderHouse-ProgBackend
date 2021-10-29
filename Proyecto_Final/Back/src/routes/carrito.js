@@ -4,8 +4,9 @@ const carritoController = require('../controller/carrito')
 module.exports = (router) =>{
     router
         .post('/api/carrito',carritoController.addPrdCart)
-        .get('/api/carrito',carritoController.getAllPrdCart)
+        .get('/api/carrito/:id',carritoController.getAllPrdCart)
         .delete('/api/carrito/:id',carritoController.dltPrdCart)
+        .put('/api/carrito',carritoController.updPrdCant)
 
     return router;
 }

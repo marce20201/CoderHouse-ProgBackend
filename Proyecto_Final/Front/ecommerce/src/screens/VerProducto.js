@@ -2,15 +2,18 @@ import React,{useEffect,useState} from 'react'
 import {useLocation,useHistory} from 'react-router-dom'
 import './styles/verPrdStyles.css'
 import {KeyboardArrowLeft,KeyboardArrowRight,Shop,ShoppingCart,Favorite,FavoriteBorder} from '@mui/icons-material'
-import {Divider,IconButton,TextField,Button,CircularProgress,LinearProgress} from '@mui/material'
+import {Divider,IconButton,TextField,Button,CircularProgress,Snackbar,Alert} from '@mui/material'
 import NavBar from '../components/NavBar'
 import PrdCategoria from '../components/PrdCategoria'
 import axios from 'axios'
+import { useSelector, useDispatch } from 'react-redux'
+import { addItem } from '../store/action/cart.action'
+import CartDrawer from '../components/CartDrawer'
 
 const VerProducto = ({}) =>{
 
     const datosProducto = {
-        id:"",
+        _id:"",
         nombre: "",
         descripcion: "",
         codigo: 0,
@@ -18,13 +21,48 @@ const VerProducto = ({}) =>{
         stock: 0,
         imagen: "",
         categoria: "",
-        vendedor:"" 
+        vendedor:"",
+        cantidad: 0, 
     }
 
+    const [msg,setMsg] = useState(null)
+    const [openMsg,setOpenMsg] = useState(false)
+    const [typeMsg,setTypeMsg] = useState(null)
+    const user = useSelector(state=>state.usr.usuario)
+    const dispatch = useDispatch()
     const location = useLocation()
     const [producto,setProducto] = useState(datosProducto)
     const [contador,setContador] = useState(0)
     const [loading,setLoading] = useState(false)
+    const [openCart,setOpenCart] = useState(false)
+
+    const toggleDrawer = () => setOpenCart(!openCart)
+
+    const closeMsg = () => setOpenMsg(!openMsg)
+
+    const agregarAlCarrito = () =>{
+
+    }
+    
+    const verificaCarrito = () =>{
+        if(contador == 0){
+            setTypeMsg("warning")
+            setMsg("Debes seleccionar al menos un producto")
+            setOpenMsg(true)
+        }else{
+            setOpenMsg(false)
+            if(user){
+                agregarAlCarrito()
+            }else{
+                setTypeMsg("success")
+                setMsg("El producto fue agregado a tu Carrito!")
+                setOpenMsg(true)
+                producto.cantidad = contador
+                dispatch(addItem(producto))
+                toggleDrawer()
+            }
+        }
+    }
 
     const sumarestaContador = (op) =>{
         if(op==='suma')
@@ -40,7 +78,7 @@ const VerProducto = ({}) =>{
                 setLoading(true)
                 await axios.get(`http://localhost:8080/api/productos/id/${id}`)
                      .then(res=>{
-                             producto.id = res.data._id
+                             producto._id = res.data._id
                              producto.nombre = res.data.nombre
                              producto.descripcion =  res.data.descripcion
                              producto.codigo = res.data.codigo
@@ -61,8 +99,8 @@ const VerProducto = ({}) =>{
     },[location.state.producto])
 
     return(
-        <div>
-            <NavBar />
+        <>
+            <NavBar openCart={toggleDrawer}/>
             <div className="container" id="box-principal">
              {loading ? <CircularProgress />
                       : <div id="box-producto">
@@ -94,13 +132,17 @@ const VerProducto = ({}) =>{
                                 </div>
                                 <div id="box-verpd-btn">
                                     <Button id="btn-buy" variant="contained" startIcon={<Shop />}>Comprar ahora</Button>
-                                    <Button id="btn-cart" variant="outlined" startIcon={<ShoppingCart/>}>Agregar al Carrito</Button>
+                                    <Button id="btn-cart" variant="outlined" startIcon={<ShoppingCart/>} onClick={()=>verificaCarrito()}>Agregar al Carrito</Button>
                                 </div>
                             </div>
                      </div>}    
             </div>                  
             <PrdCategoria categoria={producto.categoria} prdid={producto.id} />
-        </div>
+            {openCart && <CartDrawer open={openCart} toggle={toggleDrawer}/>}
+            {openMsg && <Snackbar anchorOrigin={{vertical:'bottom',horizontal:'left'}}  open={openMsg} autoHideDuration={3000} onClose={()=>closeMsg()}>
+                        <Alert onClose={()=>closeMsg()} severity={typeMsg}>{msg}</Alert>
+                    </Snackbar>}
+        </>
     )
 }
 

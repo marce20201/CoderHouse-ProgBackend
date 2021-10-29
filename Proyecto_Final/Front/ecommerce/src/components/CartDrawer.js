@@ -1,11 +1,84 @@
-import React from 'react'
-import {Drawer,Button,IconButton,Divider} from '@mui/material'
+import React, { useState, useEffect } from 'react'
+import {Drawer,Button,IconButton,Divider,CircularProgress} from '@mui/material'
 import {ShoppingBag,Close} from '@mui/icons-material'
 import './styles/cartDrawStyles.css'
 import CartItem from './CartItem'
+import {useSelector,useDispatch} from 'react-redux'
+import axios from 'axios'
+import Carrito from '../assets/carrito.png'
+import { dltItem } from '../store/action/cart.action'
+
+const SinProductos = ({msg}) =>{
+    return(
+        <>
+            <div id="box-sinPrd">
+                <div id="box-sinPrd-body">
+                    <div id="box-img-sinprd">
+                        <img src={Carrito} id="img-sinprd"/>
+                    </div>
+                    <p id="sinprd-title">{msg}</p>
+                </div>
+            </div>
+        </>
+    )
+} 
 
 const CartDrawer = ({open,toggle}) =>{
 
+    const dispatch = useDispatch()
+    const [cartPrd,setCartPrd] = useState([])
+    const [msg,setMsg] = useState(null)
+    const user = useSelector(state=>state.usr.usuario)
+    const cart = useSelector(state=>state.cart.carrito)
+    const [loading,setLoading] = useState(false)
+
+
+
+    const cargaCarrito = async () =>{
+        setLoading(true)
+        await axios.get(`http://localhost:8080/api/carrito/${user}`)
+                  .then(result=>{
+                       if(result.data.res){
+                           const productos = result.data.data.items
+                           setCartPrd(productos)
+                           setLoading(false)
+                       }else{
+                           setMsg(result.data.msg)
+                       } 
+                  }).catch(err=>console.log(err))   
+    }
+
+    const verificaListaCarrito = () =>{
+        if(user){
+             cargaCarrito()
+        }else{
+           if(cart.length > 0){
+               setCartPrd(cart)
+           }else{
+               setMsg('Aun no tienes productos en tu carrito')
+           }
+            
+        }
+    }
+
+    const eliminaProducto = (item) =>{
+        setLoading(true)
+        if(user){
+
+        }else{
+            /* console.log(`El id que llega para eliminar: ${id}`); */
+            dispatch(dltItem(item))
+            verificaListaCarrito()
+            setLoading(false)
+        }
+    }
+
+
+    useEffect(()=>{
+        verificaListaCarrito()
+    },[user,cart])
+
+    
 
     return(
         <Drawer open={open} anchor="right" onClose={()=>toggle()}>
@@ -21,16 +94,12 @@ const CartDrawer = ({open,toggle}) =>{
                 </div>
                 <Divider />
 
-            <CartItem />    
+
+            {loading && <div id="cargando-items"><CircularProgress /></div>}
+            {msg ? <SinProductos msg={msg} /> : <CartItem data={cartPrd} eliminaPrd={eliminaProducto}/>}    
 
 
-             <div id="box-total-btn">
-                <h6>Total: $500</h6>
-                <div id="box-btn-cart">
-                    <Button variant="outlined">Vaciar Carrito</Button>
-                    <Button variant="outlined">Generar Orden</Button>
-                </div>
-             </div>
+             
             </div>
         </Drawer>
     )
