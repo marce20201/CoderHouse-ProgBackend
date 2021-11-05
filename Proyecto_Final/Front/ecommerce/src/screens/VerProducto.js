@@ -40,11 +40,32 @@ const VerProducto = ({}) =>{
 
     const closeMsg = () => setOpenMsg(!openMsg)
 
-    const agregarAlCarrito = () =>{
-
+    const agregarAlCarrito = async (item) =>{
+        const objNuevo = {
+            usuarioId: user,
+            items:{
+                nombre:item.nombre,
+                descripcion:item.descripcion,
+                codigo:item.codigo,
+                precio:item.precio,
+                stock:item.stock,
+                imagen:item.imagen,
+                categoria:item.categoria,
+                cantidad: contador
+            }
+        }
+        await axios.post(`http://localhost:8080/api/carrito`,objNuevo)
+            .then(result=>{
+                if(result.data.res){
+                    setTypeMsg("success")
+                    setMsg('El producto fue agregado a tu Carrito!')
+                    setOpenMsg(true)
+                    toggleDrawer()
+                }
+            }).catch(err=>console.log(err))
     }
     
-    const verificaCarrito = () =>{
+    const verificaCarrito = (item) =>{
         if(contador == 0){
             setTypeMsg("warning")
             setMsg("Debes seleccionar al menos un producto")
@@ -52,7 +73,7 @@ const VerProducto = ({}) =>{
         }else{
             setOpenMsg(false)
             if(user){
-                agregarAlCarrito()
+                agregarAlCarrito(item)
             }else{
                 setTypeMsg("success")
                 setMsg("El producto fue agregado a tu Carrito!")
@@ -132,7 +153,7 @@ const VerProducto = ({}) =>{
                                 </div>
                                 <div id="box-verpd-btn">
                                     <Button id="btn-buy" variant="contained" startIcon={<Shop />}>Comprar ahora</Button>
-                                    <Button id="btn-cart" variant="outlined" startIcon={<ShoppingCart/>} onClick={()=>verificaCarrito()}>Agregar al Carrito</Button>
+                                    <Button id="btn-cart" variant="outlined" startIcon={<ShoppingCart/>} onClick={()=>verificaCarrito(producto)}>Agregar al Carrito</Button>
                                 </div>
                             </div>
                      </div>}    

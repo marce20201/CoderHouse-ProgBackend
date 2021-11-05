@@ -33,9 +33,9 @@ module.exports = class {
                 let nuevaCantidad = prdcart.items[0].cantidad + prd.items.cantidad
                 let precioXcantidad = prd.items.precio * prd.items.cantidad
                 let nuevoTotal = prdcart.total + precioXcantidad
-                console.log(`nueva cantidad: ${nuevaCantidad}`)
+                /* console.log(`nueva cantidad: ${nuevaCantidad}`)
                 console.log(`nueva precio: ${precioXcantidad}`);
-                console.log(`nueva total: ${nuevoTotal}`);
+                console.log(`nueva total: ${nuevoTotal}`); */
                 await carritoModel.updateMany({'usuarioId':prd.usuarioId,'items.codigo':prd.items.codigo},{$set:{'total':nuevoTotal, 'items.cantidad':nuevaCantidad }})
                 /* await carritoModel.findOneAndUpdate({'usuarioId':prd.usuarioId},{'items.cantidad':nuevaCantidad}) */
                 return true
@@ -56,11 +56,21 @@ module.exports = class {
         }
     }
 
-    async dltPrdCart(prdId){
-        await carritoModel.deleteOne({prdId})
+    async dltPrdCart(usrid,prdid){
+       try {
+            const data = await carritoModel.findOne({'usuarioId': usrid})
+            if(data){
+                await carritoModel.updateOne({'usuarioId':usrid},{$pull:{'items':{'codigo':prdid}}})
+                return true
+            }else{
+                return false
+            }  
+       } catch (error) {
+           return error
+       }
     }
 
     async updCart(data){
-        await
+        
     }
 }

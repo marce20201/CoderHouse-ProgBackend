@@ -65,3 +65,8 @@ exports.buscaUsuario = async (req,res,next) =>{
         res.status(500).send('Ocurrio un error en la peticion')
     }
 }
+
+exports.loginFacebook = (req,res) =>{
+    console.log(req)
+    res.send('ok')
+}

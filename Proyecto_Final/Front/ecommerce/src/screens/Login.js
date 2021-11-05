@@ -41,6 +41,13 @@ const Login = () =>{
             }).catch(err=>console.log(err))
     }
 
+   /*  const iniciarSesionFB = async () =>{
+        await axios.get('http://localhost:8080/api/auth/facebook')
+            .then(result=>{
+                console.log(result)
+            }).catch(err=>console.log(err))
+    } */
+
     return(
         <div>
             <NavBar />
@@ -65,12 +72,12 @@ const Login = () =>{
                             <Button id="btn-signup-form" variant="outlined" onClick={()=>history.push('/registrarse')}>Registrarse</Button>
                         </div>
                     </div>
-                    <div id="box-inicio-alterno">
+                    {/* <div id="box-inicio-alterno">
                         <Divider>O iniciar con</Divider>
                         <div id="box-otros">
-                            <Button id="btn-facebook-form" variant="contained" startIcon={<FacebookIcon color="#FFFFFF"/>}>Iniciar Sesion con Facebook</Button>
+                            <Button id="btn-facebook-form" variant="contained" onClick={()=>iniciarSesionFB()} startIcon={<FacebookIcon color="#FFFFFF"/>}>Iniciar Sesion con Facebook</Button>
                         </div>
-                    </div>
+                    </div> */}
                     {error && <Message tipo="alert alert-warning" mensaje={error} />}
                 </div>
             </div>

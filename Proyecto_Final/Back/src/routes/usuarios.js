@@ -3,7 +3,6 @@ const passport = require('passport')
 require('../auth/local')(passport)
 
 
-
 //Exporto las rutas
 module.exports = (router) => {
     router
@@ -12,6 +11,7 @@ module.exports = (router) => {
         .get("/api/loginfail",usuarioController.loginFail)
         .get("/api/logout",usuarioController.logout)
         .get("/api/usr/:id",usuarioController.buscaUsuario)
+      
 
     return router;
 }

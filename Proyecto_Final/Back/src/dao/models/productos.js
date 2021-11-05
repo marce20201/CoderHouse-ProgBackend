@@ -9,6 +9,7 @@ const productosSchema = new Schema({
     stock:Number,
     imagen:String,
     categoria: String,
+    usuarioId:String,
     vendedor: String,
 })
 

@@ -2,7 +2,7 @@ const carritoServices = require('../services/carrito')
 const cart = new carritoServices()
 
 exports.addPrdCart = async (req,res,next) =>{
-   /*  console.log(req.body) */
+    /* console.log(req.body) */
     try {
         const resultado = await cart.addPrdCart(req.body)
         if(resultado){
@@ -38,10 +38,12 @@ exports.getAllPrdCart = async (req,res,next) =>{
 }
 
 exports.dltPrdCart = async(req,res,next)=>{
+    let {id,prdid} = req.params
     try {
-        let codigo = req.params.id
-        await cart.dltPrdCart(codigo)
-        res.send('Producto eliminado')
+        const result = await cart.dltPrdCart(id,prdid)
+        if(result)res.json({res: result,msg:"Se elimino el producto de tu carrito"})
+        else res.json({res: false,msg:"Ocurrio un error en el servidor"})
+    
     } catch (error) {
         res.status(500).send('Ocurrio un error en la peticion')
     }

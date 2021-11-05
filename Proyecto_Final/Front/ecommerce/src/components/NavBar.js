@@ -7,9 +7,11 @@ import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { useSelector , useDispatch} from 'react-redux';
 import { logoutUser } from '../store/action/usuario.action';
 import axios from 'axios'
-import { IconButton } from '@mui/material';
+import { IconButton,MenuItem,Menu } from '@mui/material';
 import {FavoriteBorder,Home} from '@mui/icons-material'
 import Favoritos from './Favoritos';
+import MenuPub from './PublicarMenu/MenuPub';
+import MenuUsuario from './MenuUsuario/MenuUsuario';
 
 const NavBar = ({openCart}) =>{
     const history = useHistory()
@@ -23,6 +25,7 @@ const NavBar = ({openCart}) =>{
             .then(res=>{
                 console.log(res)
                 dispatch(logoutUser())
+                history.push('/')
         
             }).catch(err=>console.log(err))
         } catch (error) {         
@@ -48,13 +51,11 @@ const NavBar = ({openCart}) =>{
                     </ul>
                     <div id="box-btn-right">
 
-                       {usr && <Link to={`/`} className="nav-link">Vender</Link>}
+                       {usr && <MenuPub />}
                        <IconButton onClick={()=>abrirCerrarFavoritos()}><FavoriteBorder id="fav-icon" /></IconButton>
                        <CartLogo openCart={openCart} />
                       {usr  
-                        ? <div>
-                             <button className="btn btn-navbar" id="btn-regist" onClick={()=>cerrarCuenta()}>Cerrar cuenta</button>
-                           </div>
+                        ? <MenuUsuario />
                         : <div>
                             <Link to={'/registrarse'}><button className="btn btn-navbar" id="btn-regist">Registrarse</button></Link>
                             <Link to={`/login`}> <button className="btn btn-navbar" id="btn-login">Iniciar Sesion</button></Link> 

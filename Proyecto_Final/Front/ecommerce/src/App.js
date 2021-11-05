@@ -7,9 +7,10 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import Login from './screens/Login';
 import Home from './screens/Home';
 import Cart from './screens/Cart'
-import AgregarProducto from './screens/AgregarProducto';
+import Publicar from './screens/Publicar/Publicar';
 import Registrarse from './screens/Registrarse';
 import VerProducto from './screens/VerProducto';
+import FacebookCll from './screens/FacebookCll';
 
 function App() {
   
@@ -24,14 +25,15 @@ function App() {
             <Route path="/cart">
               <Cart />
             </Route>
-            <Route path="/agregar">
-              <AgregarProducto />
+            <Route path="/publicar">
+              <Publicar />
             </Route>
             <Route path="/login">
               <Login />
             </Route>
             <Route path="/registrarse" component={Registrarse}/>
             <Route path="/verproducto" component={VerProducto}/>
+            <Route path="/facebook/callback" component={FacebookCll} />
         </Switch>
     </BrowserRouter>
   );

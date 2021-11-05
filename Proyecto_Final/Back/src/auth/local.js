@@ -12,6 +12,7 @@ const isValidPassword = (user,password)=>{
 
 
 module.exports = (passport) =>{
+
     passport.use('login',new LocalStrategy({
       usernameField:'email',
       passwordField:'password'

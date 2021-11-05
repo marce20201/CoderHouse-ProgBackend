@@ -124,7 +124,7 @@ const ProductColumn = () =>{
 
     useEffect(()=>{
         cargaProductos()
-    },[])
+    },[products])
 
     return(
         <div>

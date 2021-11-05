@@ -8,16 +8,19 @@ module.exports = class {
     async createProduct(prd){
         let nuevoPrd = {}
         try {
+            const datos = await productosModel.countDocuments()
+            let nuevoCodigo = datos + 1
             const user = await usrModel.findById({'_id':prd.usuarioId})
             if(user){
                 nuevoPrd = {
                     nombre: prd.nombre,
                     descripcion:prd.descripcion,
-                    codigo:prd.codigo,
+                    codigo:nuevoCodigo,
                     precio:prd.precio,
                     stock:prd.stock,
                     imagen:prd.imagen,
                     categoria:prd.categoria,
+                    usuarioId: prd.usuarioId,
                     vendedor:user.nombre
                 }
                 await productosModel.create(nuevoPrd)

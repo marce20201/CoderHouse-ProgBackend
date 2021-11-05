@@ -1,0 +1,25 @@
+#caja-publicar{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#caja-form-pub{    
+    background-color: #FFFFFF;
+    width: 500px;
+    padding: 20px;
+}
+
+#caja-btn-pub{
+    margin: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#btn-pub{
+    text-transform: capitalize;
+}
+/* .input{
+    width: 400px;
+} */

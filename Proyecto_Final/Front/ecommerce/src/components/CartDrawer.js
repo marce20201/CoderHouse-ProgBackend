@@ -40,6 +40,7 @@ const CartDrawer = ({open,toggle}) =>{
                   .then(result=>{
                        if(result.data.res){
                            const productos = result.data.data.items
+                           console.log(productos)
                            setCartPrd(productos)
                            setLoading(false)
                        }else{
@@ -61,10 +62,21 @@ const CartDrawer = ({open,toggle}) =>{
         }
     }
 
+    const eliminaItemdelCarrito = async (prdCod) =>{
+        await axios.delete(`http://localhost:8080/api/carrito/${user}/${prdCod}`)
+            .then(result=>{
+                console.log(result)
+                if(result.data.res){
+                    setLoading(false)
+                    cargaCarrito()
+                }
+            }).catch(err=>console.log(err))
+    }
+
     const eliminaProducto = (item) =>{
         setLoading(true)
         if(user){
-
+            eliminaItemdelCarrito(item.codigo)
         }else{
             /* console.log(`El id que llega para eliminar: ${id}`); */
             dispatch(dltItem(item))
