@@ -2,6 +2,9 @@ const usuariosServices = require('../services/usuarios')
 const usr = new usuariosServices()
 const token = require('../auth/token')
 const bcrypt = require('bcrypt')
+const nodemailer = require('nodemailer')
+const {GMAILPASS,TWILIO_ID,TWILIO_TOKEN} = require('../config/globals')
+const twilioClient = require("twilio")(TWILIO_ID,TWILIO_TOKEN)
 
 const createHash = (password)=>{
     return bcrypt.hashSync(password,bcrypt.genSaltSync(10),null)
@@ -69,4 +72,50 @@ exports.buscaUsuario = async (req,res,next) =>{
 exports.loginFacebook = (req,res) =>{
     console.log(req)
     res.send('ok')
+}
+
+exports.sendEmail = async (req,res) =>{
+    let {email} = req.body
+    console.log(req.body)
+    const transporter = nodemailer.createTransport({
+        host: "smtp.gmail.com",
+        port: 465,
+        secure: true,
+        auth:{
+            user: "tomascostillachavez@gmail.com",
+            pass: GMAILPASS,
+        },
+        tls:{
+            rejectUnauthorized: false
+        }
+    })
+
+    await transporter.sendMail({
+        from: "Servidor de nodejs",
+        to: email,
+        subject:"Mail desde pruebas",
+        html:`<h2>La clave es 12345</h2>`
+    })
+
+    res.status(200).json({res:true,msg: "Se ha enviado una clave de verificacion a tu mail"})
+
+}
+
+exports.verificaClave = (req,res) =>{
+    let {clave} = req.params
+    if(clave==='12345'){
+        res.status(200).json({res:true,msg: "Se verifico la clave con exito"})
+    }else{
+        res.json({res:false,msg:"La clave es incorrecta"})
+    }
+}
+
+exports.sendMsg = async (req,res) =>{
+    let {phone} = req.body
+    await twilioClient.messages.create({
+        body: "La clave es 12345",
+        from: "+12562429859",
+        to: phone
+    })
+    res.status(200).json({res:true,msg:'Se ha enviado una clave de verificacion a tu celular'})
 }

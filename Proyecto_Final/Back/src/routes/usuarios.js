@@ -6,12 +6,15 @@ require('../auth/local')(passport)
 //Exporto las rutas
 module.exports = (router) => {
     router
-        .post("/api/login",passport.authenticate('login',{failureRedirect:'/api/loginfail'}),usuarioController.loginUser)
-        .post("/api/register",usuarioController.registrarUsuario)
-        .get("/api/loginfail",usuarioController.loginFail)
-        .get("/api/logout",usuarioController.logout)
-        .get("/api/usr/:id",usuarioController.buscaUsuario)
-      
+        .post("/login",passport.authenticate('login',{failureRedirect:'/api/loginfail'}),usuarioController.loginUser)
+        .post("/register",usuarioController.registrarUsuario)
+        .get("/loginfail",usuarioController.loginFail)
+        .get("/logout",usuarioController.logout)
+        .get("/usr/:id",usuarioController.buscaUsuario)
+        .post("/email",usuarioController.sendEmail)
+        .get("/email/verificacion/:clave",usuarioController.verificaClave)
+        .post("/message",usuarioController.sendMsg)
+
 
     return router;
 }

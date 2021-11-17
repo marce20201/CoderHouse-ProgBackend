@@ -32,3 +32,23 @@
 #link-login{
     text-decoration: none;
 }
+#verificacion-box{
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+#verificacion-btn{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+#class-btn{
+    margin: 10px;
+    
+}
+#verifica-email{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}

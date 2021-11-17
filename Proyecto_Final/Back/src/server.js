@@ -37,7 +37,7 @@ app.use(passport.session())
 //Rutas
 app.use(routesPrd(router))
 app.use(routesCart(router)) 
-app.use(routesUser(router))
+app.use('/api',routesUser(router))
 app.use(routesCateg(router))
 app.use(routesFav(router))
 
